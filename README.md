@@ -1,24 +1,73 @@
 # README
+Ruby version - 2.3.1
+Rails - 5.0.7
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ Prerequisites: git, rbenv, terraform, awscli, ruby (with credentials in PATH & .pem file setup)
+    Use your software package manager of choice and install on which ever system is running the server
+    Operational Shopify Partner Development store to test application
+ 
+ * Download, Install App & Gems then run generators and db:migrations
+ >```
+ >$ git clone https://github.com/NickMoignard/shopify_embedded_app.git;
+ >$ cd /path/to/shopify_embedded_app;
+ >$ bundle update;
+ >$ bundle;
+ >$ rails webpacker:install
+ >$ rails webpacker:install:react
+ >$ rails generate:install:react
+ >$ rails generate shopify_app:install
+ >$ rails generate shopify_app:shop_model
+ >$ rails generate shopify_app:home_controller
+ >$ rails db:create
+ >$ rails db:migrate
+ >```
+ 
+ 
+ * Test DB & Rails Server
+ > If you can connect to the shop model. db is all set up :)
+ >```
+ >$ rails c
+ >irb(main):002:0> Shop.connection
+ >```
+ >test the server works and go to localhost:3000
+ >
+ >```$ rails s```
 
-Things you may want to cover:
+ * Add your Shopify Credentials to Environment
+>```
+>/.env
+>SHOPIFY_API_KEY=<your api key>
+>SHOPIFY_API_SECRET=<your api secret>
+>```
 
-* Ruby version
+* Install Base App on Development Store 
+>From the Partner Dashboard click test application and try installing on one of your personal development stores.
+>You will most likely have to do a bit of debugging with your servers or permissions to get this going. Just google the error codes.  
+> 
+>    Common Errors
+>    - AWS security groups not having correct permissions and
+>    - API Credentials not correctly loaded as environment variables
 
-* System dependencies
+# Deployment
+* Terraform - AWS
+> 0. click this and ensure you get understand how terraform works. It will result in your AWS account being charged
+> (if free tier not specified) https://www.terraform.io/docs/providers/aws/index.html
+> 1. Ensure AWS credentials are Environment Variables in your PATH.
+> 2. Setup AWSKeyPair.pem and download onto local machine.
+> 3. Check that `awscli` is installed.
+> 4. Alter the terraform configuration file `Main.tf` to your liking
+> 5. `$ terraform init`
+> 6. `$ terraform plan`
+> 7. `$ terraform apply`
+> Note: use `$ terraform destroy` to remove unwanted resource instances 
 
-* Configuration
 
-* Database creation
 
-* Database initialization
 
+
+# TBA
 * How to run the test suite
+    tba
 
 * Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
