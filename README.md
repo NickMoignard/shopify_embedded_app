@@ -50,16 +50,26 @@ Rails - 5.0.7
 
 # Deployment
 * Terraform - AWS
-> 0. click this and ensure you get understand how terraform works. It will result in your AWS account being charged
-> (if free tier not specified) https://www.terraform.io/docs/providers/aws/index.html
-> 1. Ensure AWS credentials are Environment Variables in your PATH.
+> 0. Click this https://www.terraform.io/docs/providers/aws/index.html and ensure you get understand how terraform works. It will result in your AWS account being charged
+> (if free tier not specified) 
 > 2. Setup AWSKeyPair.pem and download onto local machine.
-> 3. Check that `awscli` is installed.
-> 4. Alter the terraform configuration file `Main.tf` to your liking
-> 5. `$ terraform init`
-> 6. `$ terraform plan`
-> 7. `$ terraform apply`
-> Note: use `$ terraform destroy` to remove unwanted resource instances 
+> 3. Check that `awscli` is installed.  
+> 4. Ensure AWS credentials are Environment Variables in your PATH.
+> 4.  ```
+>    $ export AWS_ACCESS_KEY_ID="anaccesskey"
+>    $ export AWS_SECRET_ACCESS_KEY="asecretkey"
+>    $ export AWS_DEFAULT_REGION="us-west-2"
+>    ```
+> 5. Alter the terraform configuration file `Main.tf` to your liking
+> 
+>   You should think deeply about your main.tf file and the requirments you need for your application
+> 6. 
+> 6. ```
+>    $ terraform plan
+>    $ terraform apply
+>   ```
+>
+> NOTE: use `$ terraform destroy` to remove unwanted resource instances 
 
 
 
